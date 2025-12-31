@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Scolaire</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <i class="bi bi-mortarboard-fill"></i> Gestion Scolaire
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/eleves">Élèves</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/filieres">Filières</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cours">Cours</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Contenu principal -->
+<div class="container mt-5">
+    <div class="row text-center">
+        <div class="col-md-12 mb-5">
+            <h1 class="display-4">
+                <i class="bi bi-house-fill text-primary"></i>
+                Bienvenue dans le système de gestion scolaire
+            </h1>
+            <p class="lead text-muted">Gérez facilement vos élèves, filières et cours</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <!-- Card Élèves -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-people-fill text-primary" style="font-size: 4rem;"></i>
+                    <h3 class="card-title mt-3">Élèves</h3>
+                    <p class="card-text">Gérer les élèves, leurs filières et leurs inscriptions aux cours</p>
+                    <a href="/eleves" class="btn btn-primary">Accéder</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Filières -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-journal-bookmark-fill text-success" style="font-size: 4rem;"></i>
+                    <h3 class="card-title mt-3">Filières</h3>
+                    <p class="card-text">Consulter et gérer les différentes filières et leurs cours</p>
+                    <a href="/filieres" class="btn btn-success">Accéder</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Cours -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-book-fill text-warning" style="font-size: 4rem;"></i>
+                    <h3 class="card-title mt-3">Cours</h3>
+                    <p class="card-text">Gérer les cours et leurs rattachements aux filières</p>
+                    <a href="/cours" class="btn btn-warning">Accéder</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

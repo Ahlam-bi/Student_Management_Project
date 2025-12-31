@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Élèves</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><i class="bi bi-mortarboard-fill"></i> Gestion Scolaire</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="/eleves">Élèves</a></li>
+                <li class="nav-item"><a class="nav-link" href="/filieres">Filières</a></li>
+                <li class="nav-item"><a class="nav-link" href="/cours">Cours</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="bi bi-people-fill text-primary"></i> Liste des Élèves</h2>
+        <a href="/eleves/new" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Nouvel Élève
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>N° Inscription</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Filière</th>
+                <th>Cours suivis</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="eleve : ${eleves}">
+                <td>
+                    <small class="text-muted"
+                           th:text="${eleve.dossierAdministratif?.numeroInscription}"></small>
+                </td>
+                <td th:text="${eleve.nom}"></td>
+                <td th:text="${eleve.prenom}"></td>
+                <td>
+                            <span th:if="${eleve.filiere != null}"
+                                  class="badge bg-success"
+                                  th:text="${eleve.filiere.nom}"></span>
+                    <span th:unless="${eleve.filiere != null}"
+                          class="badge bg-secondary">Non assigné</span>
+                </td>
+                <td>
+                    <span class="badge bg-info" th:text="${eleve.cours.size()}"></span>
+                </td>
+                <td>
+                    <a th:href="@{/eleves/details/{id}(id=${eleve.id})}"
+                       class="btn btn-sm btn-info" title="Détails">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                    <a th:href="@{/eleves/inscription/{id}(id=${eleve.id})}"
+                       class="btn btn-sm btn-success" title="Inscription aux cours">
+                        <i class="bi bi-journal-plus"></i>
+                    </a>
+                    <a th:href="@{/eleves/edit/{id}(id=${eleve.id})}"
+                       class="btn btn-sm btn-warning" title="Modifier">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a th:href="@{/eleves/delete/{id}(id=${eleve.id})}"
+                       class="btn btn-sm btn-danger"
+                       onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élève ?')"
+                       title="Supprimer">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
